@@ -1,0 +1,26 @@
+{% extends 'layout/layout.twig' %}
+
+{% block content %}
+    <h1>My destination</h1>
+    <p>Title search: {{ title_search != '' ? title_search : 'None' }}
+    </p>
+    <p>
+     <a href="{{ url('destination', {'action' : 'add'}) }}">Add new destination</a>
+    </p>
+    <table class="table">
+        <tr>
+         <th>Title</th>
+         <th>Action</th>
+         <th>&nbsp;</th>
+        </tr>
+        {% for destination in destinations %}
+            <tr>
+                <td><a href="{{ url('destination', {'action' : 'edit', 'id' : destination.id }) }}">{{ destination.title }}</a></td>
+                <td>
+                    <a href="{{ url('destination', {'action' : 'edit', 'id' : destination.id }) }}">Edit</a>
+                    <a href="{{ url('destination', {'action' : 'delete', 'id' : destination.id }) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
