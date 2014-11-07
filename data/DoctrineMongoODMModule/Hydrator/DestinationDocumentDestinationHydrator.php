@@ -42,6 +42,46 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
             $this->class->reflFields['title']->setValue($document, $return);
             $hydratedData['title'] = $return;
         }
+
+        /** @Field(type="string") */
+        if (isset($data['description'])) {
+            $value = $data['description'];
+            $return = (string) $value;
+            $this->class->reflFields['description']->setValue($document, $return);
+            $hydratedData['description'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['address'])) {
+            $value = $data['address'];
+            $return = (string) $value;
+            $this->class->reflFields['address']->setValue($document, $return);
+            $hydratedData['address'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['amenities'])) {
+            $value = $data['amenities'];
+            $return = (string) $value;
+            $this->class->reflFields['amenities']->setValue($document, $return);
+            $hydratedData['amenities'] = $return;
+        }
+
+        /** @Field(type="float") */
+        if (isset($data['price'])) {
+            $value = $data['price'];
+            $return = (float) $value;
+            $this->class->reflFields['price']->setValue($document, $return);
+            $hydratedData['price'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['picture'])) {
+            $value = $data['picture'];
+            $return = (string) $value;
+            $this->class->reflFields['picture']->setValue($document, $return);
+            $hydratedData['picture'] = $return;
+        }
         return $hydratedData;
     }
 }

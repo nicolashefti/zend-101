@@ -1,0 +1,13 @@
+{% extends 'layout/layout.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-9">
+            <h1>{{ destination.title }}</h1>
+            <p>{{ destination.description }}</p>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-success btn btn-block">Book now</button>
+        </div>
+    </div>
+{% endblock content %}

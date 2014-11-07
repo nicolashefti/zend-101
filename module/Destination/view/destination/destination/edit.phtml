@@ -15,8 +15,20 @@ $form->setAttribute('action', $this->url('destination',
 ));
 $form->prepare();
 
+
 echo $this->form()->openTag($form);
+
 echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('title'));
+?>
+<div class="form-group">
+<?php
+    $title = $form->get('title');
+    ?><label><?php echo $title->getOption('label'); ?></label>
+ <?php   echo $this->formInput($title);
+    
+?>
+</div>
+<?php
+echo $this->formRow($form->get('description'));
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();

@@ -13,6 +13,21 @@ class Destination
     /** @ODM\Field(type="string") */
     public $title;
     
+    /** @ODM\Field(type="string") */
+    public $description;
+    
+    /** @ODM\String */
+    public $address;
+    
+    /** @ODM\Field(type="string") */
+    public $amenities;
+    
+    /** @ODM\Float */
+    public $price;
+    
+    /** @ODM\String */
+    public $picture;
+    
     /**
      * @return the $id
      */
@@ -78,6 +93,25 @@ class Destination
                 ),
             ));
  
+             $inputFilter->add(array(
+                'name'     => 'description',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 120,
+                            'max'      => 500,
+                        ),
+                    ),
+                ),
+            ));
+ 
             $this->inputFilter = $inputFilter;
         }
  
@@ -95,6 +129,7 @@ class Destination
     {
         $this->id = $data['id'];
         $this->title = $data['title'];
+        $this->description = $data['description'];
     }
 
        

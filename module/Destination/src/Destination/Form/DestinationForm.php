@@ -4,13 +4,18 @@ namespace Destination\Form;
 
 use Zend\Form\Form;
 
+
 class DestinationForm extends Form
 {
     public function __construct($name = null)
     {
         // we want to ignore the name passed
-        parent::__construct('album');
+        parent::__construct('destination');
 
+        $this->setAttributes(array(
+            'class' => 'form'
+        ));
+        
         $this->add(array(
             'name' => 'id',
             'type' => 'Hidden',
@@ -20,6 +25,14 @@ class DestinationForm extends Form
             'type' => 'Text',
             'options' => array(
                 'label' => 'Title',
+                'class' => 'form-control'
+         ),
+        ));
+        $this->add(array(
+            'name' => 'description',
+            'type' => 'Textarea',
+            'options' => array(
+                'label' => 'Description',
          ),
         ));
         $this->add(array(
@@ -28,6 +41,7 @@ class DestinationForm extends Form
             'attributes' => array(
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class' => 'btn btn-primary',
             ),
         ));
     }    

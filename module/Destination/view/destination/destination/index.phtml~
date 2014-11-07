@@ -4,10 +4,10 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
- <a href="<?php echo $this->url('destination', array('action'=>'add'));?>">Add new destination</a>
+ <a href="<?php echo $this->url('destination', array('action'=>'show'));?>">Add new destination</a>
 </p>
 <p>
- Title search: <?php echo ($title_search != '') ? $this->titleLike : 'None'; ?>
+ Title search: <?php echo ($title_search != '') ? $title_search : 'None'; ?>
 </p>
 <table class="table">
 <tr>

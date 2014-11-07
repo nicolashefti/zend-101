@@ -23,7 +23,6 @@ class DestinationController extends AbstractActionController
     
     public function indexAction()
     {
-        
         $qb_destination = $this->getEntityManager()
                                ->createQueryBuilder('Destination\Document\Destination');                         
                                    
@@ -35,10 +34,19 @@ class DestinationController extends AbstractActionController
         $query = $qb_destination->getQuery();
              
         return new ViewModel(array(
-            'destinations' => $query,
-            'title_search' => $title_search,
-        ));
+                                'destinations' => $query,
+                                'title_search' => $title_search,
+                            ));
         
+    }
+    
+    public function showAction()
+    {
+        $id = $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('destination');
+        }       
+        return new ViewModel(array('destination' => $this->getEntityManager()->getRepository('Destination\Document\Destination')->find($id)));
     }
 
     public function addAction()
