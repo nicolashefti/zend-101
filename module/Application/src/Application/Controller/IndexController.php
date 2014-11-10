@@ -18,18 +18,10 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        
-        $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');  
-        
-        $user = new User();
-        
-        $user->setName("Gembul");
-        
-        $dm->persist($user);
-        
-        $dm->flush();
-        
-        
+        return new ViewModel();
+    }
+    public function aboutAction()
+    {
         return new ViewModel();
     }
 }

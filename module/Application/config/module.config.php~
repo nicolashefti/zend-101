@@ -30,7 +30,12 @@ return array(
             ],
         ],
     ],
-
+    
+    /*
+     * ------------------------------------------------------------------------
+     * ROUTER
+     * ------------------------------------------------------------------------
+     */
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -40,6 +45,16 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'about' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/about',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'about',
                     ),
                 ),
             ),
