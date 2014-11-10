@@ -3,12 +3,19 @@ return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
         'Application',
-
+        
+        // Mongo DB connection
         'DoctrineModule',
         'DoctrineMongoODMModule',
-        'ZfcTwig'
+        
+        // Template
+        'ZfcTwig',
+        'PhlySimplePage', // static page simplifier
+        
+        // Dev
         'ZendDeveloperTools',
         
+        // Application
         'Destination',
     ),
 

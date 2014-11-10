@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0bd722a108251e2ce63a908752f698e1",
+    "hash": "1f94e96d80113c676f90d1a9b8d8a05d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -711,6 +711,62 @@
             "time": "2014-06-06 17:50:20"
         },
         {
+            "name": "phly/phly-simple-page",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phly/PhlySimplePage.git",
+                "reference": "f05d8428f9d753da3d4158819e6e7ffe89382df2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phly/PhlySimplePage/zipball/f05d8428f9d753da3d4158819e6e7ffe89382df2",
+                "reference": "f05d8428f9d753da3d4158819e6e7ffe89382df2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-console": "2.*",
+                "zendframework/zend-eventmanager": "2.*",
+                "zendframework/zend-http": "2.*",
+                "zendframework/zend-mvc": "2.*",
+                "zendframework/zend-stdlib": "2.*",
+                "zendframework/zend-view": "2.*"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "*@dev",
+                "phpunit/phpunit": "~3.7.0",
+                "zendframework/zend-servicemanager": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PhlySimplePage\\": "src/",
+                    "PhlySimplePageTest\\": "test/"
+                },
+                "classmap": [
+                    "./"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Matthew Weier O'Phinney",
+                    "email": "matthew@weierophinney.net",
+                    "homepage": "http://mwop.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "ZF2 Module for easily creating static pages",
+            "homepage": "https://github.com/weierophinney/PhlySimplePage",
+            "keywords": [
+                "module",
+                "zend",
+                "zf2"
+            ],
+            "time": "2014-07-15 19:55:01"
+        },
+        {
             "name": "symfony/console",
             "version": "v2.5.6",
             "target-dir": "Symfony/Component/Console",
@@ -1103,7 +1159,8 @@
         "doctrine/mongodb-odm": 10,
         "doctrine/doctrine-mongo-odm-module": 20,
         "zendframework/zend-developer-tools": 20,
-        "zf-commons/zfc-twig": 20
+        "zf-commons/zfc-twig": 20,
+        "phly/phly-simple-page": 20
     },
     "prefer-stable": false,
     "platform": {

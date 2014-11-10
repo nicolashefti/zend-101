@@ -49,6 +49,7 @@ return array(
                 ),
             ),
             
+            // Home made static page
             'about' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -56,9 +57,26 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'about',
+                        'template'   => 'application/pages/policies',
                     ),
                 ),
             ),
+            
+            // Phlystatic page
+            'policies' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/policies',
+                    'defaults' => array(
+                        'controller' => 'PhlySimplePage\Controller\Page',
+                        'template'   => 'application/pages/policies',
+                        // optionally set a specific layout for this page
+                        // 'layout'     => 'layout/some-layout',
+                    ),
+                ),
+            ),           
+            
+            
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them

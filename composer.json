@@ -13,6 +13,7 @@
         "doctrine/mongodb-odm"              : "1.0.0-BETA11",
 	    "doctrine/doctrine-mongo-odm-module": "dev-master",
         "zendframework/zend-developer-tools": "dev-master",
-        "zf-commons/zfc-twig"               : "dev-master"
+        "zf-commons/zfc-twig"               : "dev-master",
+        "phly/phly-simple-page"             : "dev-master"
     }
 }
