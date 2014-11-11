@@ -15,8 +15,9 @@ body {
 }
 
 .dest-preview-card {
-  margin:0px 5px 30px 0px;
+  margin:0px 0px 30px 0px;
   @include box-shadow(#ebebeb 2px 2px 10px);
+  @include border-radius(0 5px 5px 0);
 }
 
 .dest-preview-card .col-md-3{
@@ -26,4 +27,9 @@ body {
 
 a:hover .dest-preview-card {
   background: #f7f7f7;
+}
+
+.alert-signup-block {
+  background: #54B6D1;
+  padding:30px;
 }
