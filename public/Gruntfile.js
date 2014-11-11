@@ -15,9 +15,16 @@ module.exports = function(grunt) {
         dest: 'css/<%= pkg.name %>.min.js'
       }
     },
+    compass: {
+      dist: {
+        options: {
+            config: 'config.rb',
+        }
+      }
+    },
     watch  : {
       css: {
-          files: ['css/*.css'],
+          files: ['css/*.scss'],
           tasks: ['development-scss']
       },
     },
@@ -26,11 +33,15 @@ module.exports = function(grunt) {
   // Load the plugins
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   
-  // Default task(s).
+  // Default tasks
   grunt.registerTask('default', ['cssmin']);
   
+  // Deployment tasks
+  grunt.registerTask('deployment', ['compass', 'cssmin']);
+  
   // Development tasks, triggered by watch
-  grunt.registerTask('development-scss', ['cssmin']);
+  grunt.registerTask('development-scss', ['compass']);
 
 };

@@ -1,3 +1,7 @@
+// Compass stuff
+@import 'compass/css3/border-radius';
+
+
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 
@@ -6,3 +10,6 @@ body {
   color: $primary-color;
 }
 
+.container .jumbotron {
+  @include border-radius(0 6px 6px 6px);
+}
