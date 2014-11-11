@@ -14,7 +14,7 @@
         <link href="{{ basePath() }}/css/style.css" media="screen" rel="stylesheet" type="text/css">
         <link href="{{ basePath() }}/css/bootstrap-theme.min.css" media="screen" rel="stylesheet" type="text/css">
         <link href="{{ basePath() }}/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
-        
+        <link href="{{ basePath() }}/css/sass-style.min.css" media="screen" rel="stylesheet" type="text/css">
         {% block style %}{% endblock style %}
     
         <!-- Scripts -->
@@ -47,7 +47,7 @@
             {% block content %}{{ content|raw }}{% endblock content %}
             <hr>
             <footer>
-                <p><a href="{{ url('about') }}">{{ translate('About') }}</a>//<a href="{{ url('policies') }}">{{ translate('Policies') }}</a></p>
+                <p><a href="{{ url('about') }}">{{ translate('About') }}</a> // <a href="{{ url('policies') }}">{{ translate('Policies') }}</a></p>
                 <p>&copy; 2005 - 2014 by Zend Technologies Ltd. {{ translate('All rights reserved.') }}</p>
             </footer>
         </div> <!-- /container -->
