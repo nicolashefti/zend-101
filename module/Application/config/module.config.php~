@@ -57,6 +57,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'about',
+                        'template'   => 'application/pages/policies',
                     ),
                 ),
             ),

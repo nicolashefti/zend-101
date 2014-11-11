@@ -55,6 +55,12 @@ class Destination
     public function setTitle($name) {
         $this->title = $name;
     }
+    
+    public function available() {
+    
+        return ['Berlin','Hamburg','Munich','Köln','Frankfurt','Stuttgart','Düsseldorf','Dortmund','Essen','Bremen',
+               'Dresden','Leipzig','Hannover','Nuremberg','Duisburg','Bochum','Wuppertail','Bonn','Bielefeld','Mannheim'];
+    }
   
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

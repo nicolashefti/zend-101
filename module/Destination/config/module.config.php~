@@ -24,7 +24,12 @@ return array(
             ],
         ],
     ],
-
+    
+    /*
+     * ------------------------------------------------------------------------
+     * ROUTER
+     * ------------------------------------------------------------------------
+     */
     'router' => array(
          'routes' => array(
              'destination' => array(
@@ -54,4 +59,7 @@ return array(
              'desitnation' => __DIR__ . '/../view',
          ),
      ),
+     'strategies' => array (
+         'ViewJsonStrategy' 
+     )
 );

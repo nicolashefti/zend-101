@@ -4,6 +4,7 @@ namespace Destination\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 use Destination\Document\Destination;
 use Destination\Form\DestinationForm;
@@ -140,5 +141,14 @@ class DestinationController extends AbstractActionController
             'destination' => $this->getEntityManager()->find('Destination\Document\Destination', $id)
         );
         
+    }
+    
+    public function citiesAction()
+    {    
+        $term = preg_quote( $this->params()->fromQuery('term') , '~'); 
+
+        $available_cities = preg_grep('/^' . $term . '/i', Destination::available());
+
+        return new JsonModel($available_cities);
     }
 }

@@ -156,4 +156,8 @@ return array(
             ),
         ),
     ),
+    
+    'strategies' => array (
+         'ViewJsonStrategy' 
+    ),
 );

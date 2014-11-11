@@ -1,13 +1,17 @@
 {% extends 'layout/layout.twig' %}
 
+{% block style %}
+   <link href="{{ basePath() }}/css/jquery-ui.min.css" media="screen" rel="stylesheet" type="text/css">
+{% endblock style %}
+
 {% block content %}
 <div class="jumbotron">
     <h1>{{ translate('Welcome to %sZend 101%s'|format('<span class="zf-green">', '</span>')) }}</h1>
-    <p class="lead">Browse and book the best travel destinations.</p>
+    <p class="lead">Browse and book the best travel destinations in Germany.</p>
     <form class="form-inline" action="{{ url('destination') }}" method="get">
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control input-lg" type="text" name="title" size="30" value="" placeholder="Where do you want to travel?"/>
+                <input id="city" class="form-control input-lg" type="text" name="title" size="30" value="" placeholder="Where do you want to travel?"/>
             </div>
         </div>
         <div class="form-group">
@@ -56,3 +60,25 @@
     </div>
 </div>
 {% endblock content %}
+
+{% block inline %}
+<script type="text/javascript" src="{{ basePath() }}/js/jquery-ui.min.js"></script>
+<script>
+$(function() {
+
+  $( "#city" ).autocomplete({
+    source: "destination/cities",
+    minLength: 3,
+    select: function( event, ui ) {
+
+    },
+    open: function() {
+      $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+    },
+    close: function() {
+      $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+    }
+  });
+});
+</script>
+{% endblock inline %}
