@@ -17,19 +17,18 @@
     <p>
     &nbsp;
     </p>
-    <table class="table">
-        <tr>
-         <th>Title</th>
-         <th>Action</th>
-        </tr>
-        {% for destination in destinations %}
-            <tr>
-                <td><a href="{{ url('destination', {'action' : 'show', 'id' : destination.id }) }}">{{ destination.title }}</a></td>
-                <td>
-                    <a href="{{ url('destination', {'action' : 'edit', 'id' : destination.id }) }}">Edit</a>
-                    <a href="{{ url('destination', {'action' : 'delete', 'id' : destination.id }) }}">Delete</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    {% for destination in destinations %}
+        <a href="{{ url('destination', {'action' : 'show', 'id' : destination.id }) }}">
+          <div class="row dest-preview-card">
+            <div class="col-md-3">
+              <img class="img-responsive" src="/img/test.jpg">
+            </div>
+            <div class="col-md-9">
+              <h3>{{ destination.title }}</h3>
+              <p>{{ destination.description }}</p>
+            </div>
+          </div>
+        </a>
+    {% endfor %}
+
 {% endblock content %}

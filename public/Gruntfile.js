@@ -36,7 +36,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   
   // Default tasks
-  grunt.registerTask('default', ['cssmin']);
+  grunt.registerTask('default', ['compass', 'cssmin']);
   
   // Deployment tasks
   grunt.registerTask('deployment', ['compass', 'cssmin']);

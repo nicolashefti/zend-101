@@ -8,6 +8,10 @@
         </div>
         <div class="col-md-3">
             <button class="btn btn-success btn btn-block">Book now</button>
+            <p>
+              <a href={{ url('destination', {'action':'edit', 'id':destination.id})}}>Edit</a>
+              <a href={{ url('destination', {'action':'delete', 'id':destination.id})}}>Delete</a>
+            </p>
         </div>
     </div>
 {% endblock content %}
