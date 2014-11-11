@@ -60,6 +60,14 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
         }
 
         /** @Field(type="string") */
+        if (isset($data['city'])) {
+            $value = $data['city'];
+            $return = (string) $value;
+            $this->class->reflFields['city']->setValue($document, $return);
+            $hydratedData['city'] = $return;
+        }
+
+        /** @Field(type="string") */
         if (isset($data['amenities'])) {
             $value = $data['amenities'];
             $return = (string) $value;

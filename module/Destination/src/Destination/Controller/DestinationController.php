@@ -27,16 +27,16 @@ class DestinationController extends AbstractActionController
         $qb_destination = $this->getEntityManager()
                                ->createQueryBuilder('Destination\Document\Destination');                         
                                    
-        $title_search = $this->params()->fromQuery('title');
-        if ($title_search) {
-            $qb_destination->field('title')->equals($title_search); 
+        $city_search = $this->params()->fromQuery('city');
+        if ($city_search) {
+            $qb_destination->field('city')->equals($city_search); 
         }
         
         $query = $qb_destination->getQuery();
              
         return new ViewModel(array(
                                 'destinations' => $query,
-                                'title_search' => $title_search,
+                                'title_search' => $city_search,
                             ));
         
     }

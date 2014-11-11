@@ -19,6 +19,9 @@ class Destination
     /** @ODM\String */
     public $address;
     
+    /** @ODM\String */
+    public $city;
+    
     /** @ODM\Field(type="string") */
     public $amenities;
     
@@ -99,7 +102,7 @@ class Destination
                 ),
             ));
  
-             $inputFilter->add(array(
+            $inputFilter->add(array(
                 'name'     => 'description',
                 'required' => true,
                 'filters'  => array(
@@ -115,6 +118,13 @@ class Destination
                             'max'      => 500,
                         ),
                     ),
+                ),
+            ));
+            $inputFilter->add(array(
+                'name'     => 'price',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
                 ),
             ));
  
@@ -136,6 +146,8 @@ class Destination
         $this->id = $data['id'];
         $this->title = $data['title'];
         $this->description = $data['description'];
+        $this->price = $data['price'];
+        $this->city = $data['city'];
     }
 
        

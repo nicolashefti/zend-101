@@ -68,7 +68,7 @@ $(function() {
 
   $( "#city" ).autocomplete({
     source: "destination/cities",
-    minLength: 3,
+    minLength: 1,
     select: function( event, ui ) {
 
     },

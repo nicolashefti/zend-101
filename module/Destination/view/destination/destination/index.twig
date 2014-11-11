@@ -6,7 +6,7 @@
     <form class="form-inline" action="{{ url('destination') }}" method="get">
         <div class="form-group">
             <div class="input-group">
-                <input class="form-control input-lg" type="text" name="title" value="{{ title_search != '' ? title_search : '' }}" />
+                <input class="form-control input-lg" type="text" name="city" value="{{ title_search != '' ? title_search : '' }}" />
             </div>
         </div>
         <div class="form-group">
@@ -25,7 +25,9 @@
             </div>
             <div class="col-md-9">
               <h3>{{ destination.title }}</h3>
+              <p><strong>{{ destination.price }}</strong> &euro; / Leute</p>
               <p>{{ destination.description }}</p>
+              <p>City: {{ destination.city }}</p>
             </div>
           </div>
         </a>

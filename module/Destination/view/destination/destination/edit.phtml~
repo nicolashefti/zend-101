@@ -1,5 +1,7 @@
 <?php
 
+use Zend\Form\Element;
+
 $title = 'Edit destination';
 $this->headTitle($title);
 ?>
@@ -18,17 +20,11 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 
-echo $this->formHidden($form->get('id'));
-?>
-<div class="form-group">
-<?php
-    $title = $form->get('title');
-    ?><label><?php echo $title->getOption('label'); ?></label>
-    echo $this->formInput($title);
-    
-?>
-</div>
-<?php
-echo $this->formRow($form->get('description'));
-echo $this->formSubmit($form->get('submit'));
+foreach ($form as $element) {
+
+    echo $this->formLabel()->closeTag();
+    echo $this->formElement($element);       // <-- Magic!
+    echo $this->formElementErrors($element);
+}
+
 echo $this->form()->closeTag();

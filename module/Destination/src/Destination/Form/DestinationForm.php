@@ -3,7 +3,9 @@
 namespace Destination\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element;
 
+use Destination\Document\Destination;
 
 class DestinationForm extends Form
 {
@@ -25,15 +27,43 @@ class DestinationForm extends Form
             'type' => 'Text',
             'options' => array(
                 'label' => 'Title',
+            ),
+            'attributes' => [
+              'class' => 'form-control'
+            ]
+        ));
+
+         $this->add(array(
+           'type' => 'Select',
+           'name' => 'city',
+           'options' => array(
+             'label' => 'City',
+             'value_options' => array_combine( Destination::available(), Destination::available() ),
+           ),
+           'attributes' => [
+              'class' => 'form-control'
+           ]
+         ));
+        $this->add(array(
+            'name' => 'price',
+            'type' => 'Number',
+            'options' => array(
+                'label' => 'Price',
                 'class' => 'form-control'
          ),
+           'attributes' => [
+              'class' => 'form-control'
+           ]
         ));
         $this->add(array(
             'name' => 'description',
             'type' => 'Textarea',
             'options' => array(
                 'label' => 'Description',
-         ),
+            ),
+           'attributes' => [
+              'class' => 'form-control'
+           ]
         ));
         $this->add(array(
             'name' => 'submit',
@@ -41,8 +71,8 @@ class DestinationForm extends Form
             'attributes' => array(
                 'value' => 'Go',
                 'id' => 'submitbutton',
-                'class' => 'btn btn-primary',
-            ),
+              'class' => 'btn btn-primary'
+           ),
         ));
     }    
 }
