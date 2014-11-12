@@ -1,0 +1,24 @@
+{% extends 'layout/layout.twig' %}
+
+{% block content %}
+  <h1>Edit destination</h1>
+  {{ form().prepare() }}
+  {{ form().openTag(form)|raw }}
+  
+  {% for field in form %}
+    <div class="form-group">
+      {{ formLabel().openTag(field)|raw }}
+      {{ field.label }}
+      {{ formLabel().closeTag()|raw }}
+      {{ formElement(field)|raw }}
+      <div class="help-block">
+        <div class="text-warning">
+          {{ formElementErrors(field)|raw }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  
+  {{ form().closeTag(form)|raw }}
+{% endblock %}
+

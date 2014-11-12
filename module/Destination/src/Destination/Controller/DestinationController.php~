@@ -55,12 +55,22 @@ class DestinationController extends AbstractActionController
         $form = new DestinationForm();
         
         $form->get('submit')->setValue('Add');
+        $form->setAttribute('action', '/destination/add');
  
         $request = $this->getRequest();
         if ($request->isPost()) {
             $destination = new Destination();
-            $form->setData($request->getPost());
- 
+
+            $form->setInputFilter($destination->getInputFilter());
+            
+            $post = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+            
+            $form->setData($post);
+            die(var_dump($post));
+            
             if ($form->isValid()) {
                 $destination->exchangeArray($form->getData());
                 $this->getEntityManager()->persist($destination);
@@ -92,7 +102,9 @@ class DestinationController extends AbstractActionController
     
         $form->bind($destination);
         $form->get('submit')->setAttribute('value', 'Edit');
+        $form->setAttribute('action', '/destination/edit/' . $id);
         
+               
         $request = $this->getRequest();
         if ($request->isPost()) {
         
@@ -111,14 +123,13 @@ class DestinationController extends AbstractActionController
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('destination');
-            } else {
-              die(var_dump($form->get('city')->getMessages()));
             }
         }
-             
+        
+
         return array(
-             'id' => $id,
-             'form' => $form,
+            'id' => $id,
+            'form' => $form,
         );      
     }
 
@@ -135,8 +146,10 @@ class DestinationController extends AbstractActionController
  
             if ($del == 'Yes') {
                 $id = $request->getPost('id');
+                
                 $destination = $this->getEntityManager()->find('Destination\Document\Destination', $id);
                 if ($destination) {
+                
                     $this->getEntityManager()->remove($destination);
                     $this->getEntityManager()->flush();
                 }

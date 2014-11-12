@@ -156,10 +156,8 @@ class Destination
             ));
             
             // File Input
-            
-            // File Input
             $file = new FileInput('image-file');
-            $file->setRequired(true);
+            $file->setRequired(false);
             $file->getFilterChain()->attachByName(
                 'filerenameupload',
                 array(

@@ -21,6 +21,9 @@ class DestinationForm extends Form
         $this->add(array(
             'name' => 'id',
             'type' => 'Hidden',
+            'options' => array(
+                'label' => '',
+            ),
         ));
         $this->add(array(
             'name' => 'title',
@@ -67,7 +70,7 @@ class DestinationForm extends Form
         ));
         
         $file = new Element\File('image-file');
-        $file->setLabel('Avatar Image Upload')
+        $file->setLabel('Picture')
              ->setAttribute('id', 'image-file');
         $this->add($file);
         
