@@ -81,6 +81,7 @@ class DestinationController extends AbstractActionController
         }
 
         $destination = $this->getEntityManager()->getRepository('Destination\Document\Destination')->find($id);
+        
         if (!$destination) {
             return $this->redirect()->toRoute('destination', array(
                 'action' => 'index'
@@ -94,8 +95,15 @@ class DestinationController extends AbstractActionController
         
         $request = $this->getRequest();
         if ($request->isPost()) {
+        
+            $form->setInputFilter($destination->getInputFilter());
             
-            $form->setData($request->getPost());
+            $post = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+            // die(var_dump($post));
+            $form->setData($post);
 
             if ($form->isValid()) {
 
@@ -103,6 +111,8 @@ class DestinationController extends AbstractActionController
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('destination');
+            } else {
+              // die(var_dump($form->get('city')->getMessages()));
             }
         }
              

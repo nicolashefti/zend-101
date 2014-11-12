@@ -65,6 +65,12 @@ class DestinationForm extends Form
               'class' => 'form-control'
            ]
         ));
+        
+        $file = new Element\File('image-file');
+        $file->setLabel('Avatar Image Upload')
+             ->setAttribute('id', 'image-file');
+        $this->add($file);
+        
         $this->add(array(
             'name' => 'submit',
             'type' => 'Submit',

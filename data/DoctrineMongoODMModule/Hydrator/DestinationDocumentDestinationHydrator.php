@@ -83,10 +83,10 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
             $hydratedData['price'] = $return;
         }
 
-        /** @Field(type="string") */
+        /** @Field(type="hash") */
         if (isset($data['picture'])) {
             $value = $data['picture'];
-            $return = (string) $value;
+            $return = $value;
             $this->class->reflFields['picture']->setValue($document, $return);
             $hydratedData['picture'] = $return;
         }

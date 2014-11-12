@@ -9,6 +9,11 @@ $this->headTitle($title);
 
 <?php
 $form = $this->form;
+
+
+$filter = $form->getInputFilter();
+var_dump($filter);
+
 $form->setAttribute('action', $this->url('destination',
  array(
      'action' => 'edit',
@@ -22,6 +27,7 @@ echo $this->form()->openTag($form);
 
 foreach ($form as $element) {
 
+    echo $this->formLabel()->openTag($element);
     echo $this->formLabel()->closeTag();
     echo $this->formElement($element);       // <-- Magic!
     echo $this->formElementErrors($element);

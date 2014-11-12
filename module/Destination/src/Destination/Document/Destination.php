@@ -4,6 +4,12 @@ namespace Destination\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
+use Zend\InputFilter\InputFilter;
+use Zend\InputFilter\InputFilterAwareInterface;
+use Zend\InputFilter\InputFilterInterface;
+use Zend\InputFilter\FileInput;
+
+
 /** @ODM\Document(collection="destination") */
 class Destination 
 {
@@ -28,9 +34,11 @@ class Destination
     /** @ODM\Float */
     public $price;
     
-    /** @ODM\String */
+    /** @ODM\Hash */
     public $picture;
     
+    
+    public $inputFilter;
     /**
      * @return the $id
      */
@@ -95,13 +103,32 @@ class Destination
                         'name'    => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
-                            'min'      => 1,
+                            'min'      => 2,
                             'max'      => 100,
                         ),
                     ),
                 ),
             ));
  
+             $inputFilter->add(array(
+                'name'     => 'city',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 2,
+                            'max'      => 100,
+                        ),
+                    ),
+                ),
+            ));
+            
             $inputFilter->add(array(
                 'name'     => 'description',
                 'required' => true,
@@ -114,7 +141,7 @@ class Destination
                         'name'    => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
-                            'min'      => 120,
+                            'min'      => 10,
                             'max'      => 500,
                         ),
                     ),
@@ -127,6 +154,23 @@ class Destination
                     array('name' => 'Int'),
                 ),
             ));
+            
+            // File Input
+            
+            // File Input
+            $file = new FileInput('image-file');
+            $file->setRequired(true);
+            $file->getFilterChain()->attachByName(
+                'filerenameupload',
+                array(
+                    'target'          => './public/img/uploads/',
+                    'overwrite'       => true,
+                    'use_upload_name' => true,
+                )
+            );
+            $inputFilter->add($file);
+
+            
  
             $this->inputFilter = $inputFilter;
         }
@@ -148,6 +192,7 @@ class Destination
         $this->description = $data['description'];
         $this->price = $data['price'];
         $this->city = $data['city'];
+        $this->picture = $data['image-file'];
     }
 
        

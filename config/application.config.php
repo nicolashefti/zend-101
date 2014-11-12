@@ -17,6 +17,9 @@ return array(
         
         // Application
         'Destination',
+        
+        // Example
+        'ZF2FileUploadExamples',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

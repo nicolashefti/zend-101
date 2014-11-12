@@ -21,13 +21,13 @@
         <a href="{{ url('destination', {'action' : 'show', 'id' : destination.id }) }}">
           <div class="row dest-preview-card">
             <div class="col-md-3">
-              <img class="img-responsive" src="/img/test.jpg">
+              <img class="img-responsive" src="/img/uploads/{{ destination.picture.name }}">
             </div>
             <div class="col-md-9">
               <h3>{{ destination.title }}</h3>
               <p><strong>{{ destination.price }}</strong> &euro; / Leute</p>
               <p>{{ destination.description }}</p>
-              <p>City: {{ destination.city }}</p>
+              <p><span class="glyphicon glyphicon-map-marker"></span> City: {{ destination.city }}</p>
             </div>
           </div>
         </a>
