@@ -34,7 +34,7 @@ class Destination
     /** @ODM\Float */
     public $price;
     
-    /** @ODM\Hash */
+    /** @ODM\Collection */
     public $picture;
     
     
@@ -190,7 +190,7 @@ class Destination
         $this->description = $data['description'];
         $this->price = $data['price'];
         $this->city = $data['city'];
-        $this->picture = $data['image-file'];
+        $this->picture[] = $data['image-file'];
     }
 
        

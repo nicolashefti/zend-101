@@ -8,9 +8,21 @@ $this->headTitle($title);
 $form->setAttribute('action', $this->url('destination', array('action' => 'add')));
 $form->prepare();
 
+
+
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('title'));
-echo $this->formRow($form->get('description'));
-echo $this->formSubmit($form->get('submit'));
+
+foreach ($form as $element) {
+?>
+  <div class="form-group">
+  <?php  echo $this->formLabel()->openTag($element); 
+    // echo $element->label;
+    echo $this->formLabel()->closeTag();
+    echo $this->formElement($element);       // <-- Magic!
+    echo $this->formElementErrors($element);
+  ?>
+  </div>
+  <?php
+}
+
 echo $this->form()->closeTag();

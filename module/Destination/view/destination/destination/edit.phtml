@@ -21,11 +21,16 @@ $form->prepare();
 echo $this->form()->openTag($form);
 
 foreach ($form as $element) {
-
-    echo $this->formLabel()->openTag($element);
+?>
+  <div class="form-group">
+  <?php  echo $this->formLabel()->openTag($element); 
+    // echo $element->label;
     echo $this->formLabel()->closeTag();
     echo $this->formElement($element);       // <-- Magic!
     echo $this->formElementErrors($element);
+  ?>
+  </div>
+  <?php
 }
 
 echo $this->form()->closeTag();

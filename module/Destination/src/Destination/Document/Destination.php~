@@ -34,7 +34,7 @@ class Destination
     /** @ODM\Float */
     public $price;
     
-    /** @ODM\Hash */
+    /** @ODM\Collection */
     public $picture;
     
     
@@ -157,6 +157,7 @@ class Destination
             
             // File Input
             $file = new FileInput('image-file');
+            $file->setRequired(false);
             $file->getFilterChain()->attachByName(
                 'filerenameupload',
                 array(
