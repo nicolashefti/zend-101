@@ -21,3 +21,9 @@ extras/documentation
 
 # 
 *~
+
+# PHPStorm
+.idea
+
+# Public files built with Grunt
+public/css/sass-style.css
