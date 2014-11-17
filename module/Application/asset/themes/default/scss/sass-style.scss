@@ -1,13 +1,16 @@
+// Import base
+@import 'base/base';
+
+//Import layout
+@import 'layout/footer';
+
 // Compass stuff
 @import 'compass/css3/border-radius';
 @import 'compass/css3/box-shadow';
 
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-
 body {
   font: $font-stack;
-  color: $primary-color;
+  color: $text-color;
 }
 
 .container .jumbotron {
