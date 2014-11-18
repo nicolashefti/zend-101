@@ -1,0 +1,28 @@
+<?php
+
+$title = 'Add new git ';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('destination', array('action' => 'add')));
+$form->prepare();
+
+
+
+echo $this->form()->openTag($form);
+
+foreach ($form as $element) {
+?>
+  <div class="form-group">
+  <?php  echo $this->formLabel()->openTag($element); 
+    // echo $element->label;
+    echo $this->formLabel()->closeTag();
+    echo $this->formElement($element);       // <-- Magic!
+    echo $this->formElementErrors($element);
+  ?>
+  </div>
+  <?php
+}
+
+echo $this->form()->closeTag();

@@ -18,7 +18,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(['title' => 'Hello I could be the translated title']);
     }
     public function aboutAction()
     {
