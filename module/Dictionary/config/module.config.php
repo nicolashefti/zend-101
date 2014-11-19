@@ -47,6 +47,17 @@ return array(
             ),
         ),
     ),
+    /*
+     * ------------------------------------------------------------------------
+     * SERVICE MANAGER
+     * ------------------------------------------------------------------------
+     */
+    'service_manager' => array(
+        'factories' => array(
+            'Dictionary\DictionaryTranslator' =>
+                'Dictionary\Service\DictionaryLoaderFactory',
+        ),
+    ),
 
     'controllers' => array(
         'invokables' => array(

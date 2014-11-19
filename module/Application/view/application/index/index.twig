@@ -8,7 +8,8 @@
 <div class="jumbotron">
     <div class="text-center">
         <h1>{{ translate('Welcome to %sZend 101%s'|format('<span class="zf-green">', '</span>')) }}</h1>
-        <p class="lead">{{ title }}</p>
+        <p class="lead">{{ translate('title','homepage') }}</p>
+        <p class="lead">{{ translate('title2','homepage') }}</p>
         <p class="lead">Browse and book the best travel destinations in Germany.</p>
     </div>
     <form class="form-inline" action="{{ url('destination') }}" method="get">

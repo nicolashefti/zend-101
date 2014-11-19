@@ -11,14 +11,28 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-
-use Application\Document\User;
+use Zend\I18n\Translator\Translator;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel(['title' => 'Hello I could be the translated title']);
+
+        $loc = $this->getServiceLocator();
+
+        $translator = $loc->get('translator');
+
+        // Load from a file
+        $translator->addTranslationFile("phparray",'./module/Application/language/aaa.php','homepage');
+
+        // Load from the database
+        $translator->addTranslationFile("phparray",'./module/Application/language/aaa_bbb.php','homepage');
+        // $translator->addTranslationFile('DictionaryLoader','homepage','homepage');
+
+        $loc->get('ViewHelperManager')->get('translate')
+            ->setTranslator($translator);
+
+        return new ViewModel();
     }
     public function aboutAction()
     {
