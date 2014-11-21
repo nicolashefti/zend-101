@@ -1,18 +1,32 @@
 <?php
 
+namespace MyModule\Document;
+
+
+use Zend\Db\Adapter\Adapter as DbAdapter;
+use Zend\Db\Sql\Sql;
 use Zend\I18n\Translator\Loader\LoaderInterface;
+use Zend\I18n\Translator\Plural\Rule as PluralRule;
 use Zend\I18n\Translator\TextDomain;
 
-class DictionaryLoader implements LoaderInterface
+/**
+ * Menu
+ */
+class MyModule
 {
+
+    protected $dbAdapter;
+
+    public function __construct($dbAdapter)
+    {
+        $this->dbAdapter = $dbAdapter;
+    }
 
     public function load($filename, $locale)
     {
         $textDomain = new TextDomain();
 
-        $messages = [
-
-        ];
+        $messages = array();
 
         foreach ($messages as $message) {
             if (isset($textDomain[$message['message_key']])) {

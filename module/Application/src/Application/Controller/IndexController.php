@@ -13,21 +13,28 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\I18n\Translator\Translator;
 
+use Dictionary\Document\Dictionary;
+use Application\Document\User;
+use MyModule\Document\MyModule;
+
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-
         $loc = $this->getServiceLocator();
 
         $translator = $loc->get('translator');
+        // $test = $loc->get('DictionaryLoader');
+        // $test = $loc->get('DictionaryTranslator');
+        $menu = $this->getServiceLocator()->get('MyModuleFacto');
 
         // Load from a file
         $translator->addTranslationFile("phparray",'./module/Application/language/aaa.php','homepage');
 
         // Load from the database
-        $translator->addTranslationFile("phparray",'./module/Application/language/aaa_bbb.php','homepage');
-        // $translator->addTranslationFile('DictionaryLoader','homepage','homepage');
+        // $translator->addTranslationFile("phparray",'./module/Application/language/aaa_bbb.php','homepage');
+        // $translator->addTranslationFile('DictionaryTranslator','homepage','homepage');
+        $translator->addTranslationFile('MyModuleFacto','text-domain','text-domain');
 
         $loc->get('ViewHelperManager')->get('translate')
             ->setTranslator($translator);

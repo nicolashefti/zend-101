@@ -1,7 +1,5 @@
 <?php
-namespace Dictionary;
-
-use Zend\ServiceManager\Config;
+namespace MyModule;
 
 class Module
 {
@@ -24,11 +22,8 @@ class Module
      */
     public function getServiceConfig() {
         return array(
-            'invokables' => array(
-                'DictionaryLoader' => 'Dictionary\Document\Dictionary'
-            ),
             'factories' => array(
-                'DictionaryTranslator' => 'Dictionary\Service\DictionaryTranslatorFactory'
+                'MyModuleFacto' => 'MyModule\Service\MyModuleFactory'
             )
         );
     }

@@ -18,6 +18,7 @@ return array(
         // Application
         'Destination',
         'Dictionary',
+        'MyModule',
         
         // Example
         'ZF2FileUploadExamples',
