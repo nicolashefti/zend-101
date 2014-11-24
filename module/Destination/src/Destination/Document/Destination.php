@@ -15,6 +15,9 @@ class Destination
 {
     /** @ODM\Id */
     public $id;
+
+    /** @ODM\Field(type="boolean") */
+    public $published;
     
     /** @ODM\Field(type="string") */
     public $title;
@@ -191,6 +194,7 @@ class Destination
         $this->price = $data['price'];
         $this->city = $data['city'];
         $this->picture[] = $data['image-file'];
+        $this->published = $data['published'];
     }
 
        

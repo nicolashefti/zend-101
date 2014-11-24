@@ -35,6 +35,14 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
             $hydratedData['id'] = $return;
         }
 
+        /** @Field(type="boolean") */
+        if (isset($data['published'])) {
+            $value = $data['published'];
+            $return = (bool) $value;
+            $this->class->reflFields['published']->setValue($document, $return);
+            $hydratedData['published'] = $return;
+        }
+
         /** @Field(type="string") */
         if (isset($data['title'])) {
             $value = $data['title'];

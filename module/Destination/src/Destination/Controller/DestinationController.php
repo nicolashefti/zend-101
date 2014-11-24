@@ -11,7 +11,6 @@ use Destination\Form\DestinationForm;
 
 class DestinationController extends AbstractActionController
 {
-
     protected $em;
     
     public function getEntityManager()
@@ -31,6 +30,7 @@ class DestinationController extends AbstractActionController
         if ($city_search) {
             $qb_destination->field('city')->equals($city_search); 
         }
+        $qb_destination->field('published')->equals(true);
         
         $query = $qb_destination->getQuery();
              
@@ -72,7 +72,9 @@ class DestinationController extends AbstractActionController
             // die(var_dump($post));
             
             if ($form->isValid()) {
-                $destination->exchangeArray($form->getData());
+                $data = $form->getData();
+                $data['published'] = False;
+                $destination->exchangeArray($data);
                 $this->getEntityManager()->persist($destination);
                 $this->getEntityManager()->flush();
  
