@@ -193,8 +193,10 @@ class Destination
         $this->description = $data['description'];
         $this->price = $data['price'];
         $this->city = $data['city'];
-        $this->picture[] = $data['image-file'];
         $this->published = $data['published'];
+
+        if ($data['image-file']['error'] == 0)
+            $this->picture[] = $data['image-file'];
     }
 
        
