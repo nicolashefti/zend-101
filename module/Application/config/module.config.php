@@ -74,9 +74,20 @@ return array(
                         // 'layout'     => 'layout/some-layout',
                     ),
                 ),
-            ),           
-            
-            
+            ),
+
+            // Ajax routes
+            'ajax_routes' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/ajax',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Ajax',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -119,7 +130,7 @@ return array(
         ),
     ),
     'translator' => array(
-        'locale' => 'de_DE',
+        'locale' => 'en_EN',
         'translation_file_patterns' => array(
             array(
                 'type'     => 'gettext',
@@ -130,7 +141,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Ajax' => 'Application\Controller\AjaxController'
         ),
     ),
     'view_manager' => array(
