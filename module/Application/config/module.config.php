@@ -8,6 +8,8 @@
  */
 namespace Application;
 
+use Zend\ServiceManager\ServiceLocatorInterface;
+
 return array(
 
     /*
@@ -120,6 +122,12 @@ return array(
             ),
         ),
     ),
+    'zfctwig' => array(
+        'extensions' => [
+            'Application\Twig\Extension\RenderString',
+        ],
+    ),
+
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -129,6 +137,7 @@ return array(
             'translator' => 'MvcTranslator',
         ),
     ),
+
     'translator' => array(
         'locale' => 'en_EN',
         'translation_file_patterns' => array(
