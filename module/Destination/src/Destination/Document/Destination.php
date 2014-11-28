@@ -18,7 +18,14 @@ class Destination
 
     /** @ODM\Field(type="boolean") */
     public $published;
-    
+
+    /**
+     * Date of last update
+     *
+     * @ODM\Date
+     */
+    public $updatedAt;
+
     /** @ODM\Field(type="string") */
     public $title;
     
@@ -39,9 +46,9 @@ class Destination
     
     /** @ODM\Collection */
     public $picture;
-    
-    
+
     public $inputFilter;
+
     /**
      * @return the $id
      */
@@ -194,6 +201,7 @@ class Destination
         $this->price = $data['price'];
         $this->city = $data['city'];
         $this->published = $data['published'];
+        $this->updatedAt = new \MongoDate();
 
         if ($data['image-file']['error'] == 0)
             $this->picture[] = $data['image-file'];
