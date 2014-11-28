@@ -1,25 +1,27 @@
 {% extends 'layout/layout.twig' %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-9">
-            <h1>{{ destination.title }}</h1>
-            <div class="row">
-            {% for image in destination.picture %}
-              <div class="col-md-4">
-                <img class="img-thumbnail" src="/img/uploads/{{ image.name }}">
-              </div>
-            {% endfor %}
+    <section class="container shadow-box super-padding-box">
+    <h1>{{ destination.title }}</h1>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                {% for image in destination.picture %}
+                  <div class="col-md-4">
+                    <img class="img-thumbnail" src="/img/uploads/{{ image.name }}">
+                  </div>
+                {% endfor %}
+                </div>
+                <hr>
+                <p>{{ destination.description }}</p>
             </div>
-            <hr>
-            <p>{{ destination.description }}</p>
+            <div class="col-md-3">
+                <button class="btn btn-success btn btn-block">Book now</button>
+                <p>
+                  <a href={{ url('destination', {'action':'edit', 'id':destination.id})}}>Edit</a>
+                  <a href={{ url('destination', {'action':'delete', 'id':destination.id})}}>Delete</a>
+                </p>
+            </div>
         </div>
-        <div class="col-md-3">
-            <button class="btn btn-success btn btn-block">Book now</button>
-            <p>
-              <a href={{ url('destination', {'action':'edit', 'id':destination.id})}}>Edit</a>
-              <a href={{ url('destination', {'action':'delete', 'id':destination.id})}}>Delete</a>
-            </p>
-        </div>
-    </div>
+    </section>
 {% endblock content %}

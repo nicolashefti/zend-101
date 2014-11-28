@@ -43,9 +43,11 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <div class="container">
-            {% block content %}{{ content|raw }}{% endblock content %}
-        </div> <!-- /container -->
+        {% block content %}
+            <div class="container">
+            {{ content|raw }}
+            </div>
+        {% endblock content %}
         <footer>
           <div class="container">
             {% include "layout/footer.twig" %}
