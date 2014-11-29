@@ -1,7 +1,7 @@
 {% extends 'layout/layout.twig' %}
 
 {% block style %}
-   <link href="{{ basePath() }}/css/jquery-ui.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="{{ basePath() }}/css/jquery-ui.min.css" media="screen" rel="stylesheet" type="text/css">
 {% endblock style %}
 
 {% block content %}
@@ -18,7 +18,7 @@
                             <div class="col-md-6">
                                 <div class="input-group input-group-lg">
                                     <div class="input-group-addon"><i class="fa fa-map-marker fa-lg"></i></div>
-                                    <input class="form-control" type="city" placeholder="Wo m&ouml;chtest Du reisen ?"></input>
+                                    <input class="form-control" type="text" name="city" placeholder="Wo m&ouml;chtest Du reisen ?" />
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -40,73 +40,85 @@
             </div>
         </div>
     </section>
-    <div class="container">
-        <section id="homepage-featured" class="homepage-section">
-            <h2 class="homepage-section-header">Explore popular destinations</h2>
-            <div class="row">
+    <section id="homepage-featured" class="homepage-section">
+        <div class="container">
+            <h2 class="homepage-section-header">Explore the last destinations</h2>
+            <div class="row content-row-20">
                 {% for post in featured_posts %}
-                <div class="col-md-4">
-                    <h3 class="panel-title">{{ post.title }}</h3>
-                </div>
+                    <div class="col-md-4">
+                        <a href="{{ url('destination', { 'action':'show','id':post.id}) }}" />
+                        <img class="img-thumbnail img-responsive" src="/img/uploads/{{ post.picture[0]['name'] }}" />
+                        </a>
+                        <h3>{{ post.title }}</h3>
+                        <p><i class="fa fa-map-marker"></i> {{ post.city }}</p>
+
+                    </div>
                 {% endfor %}
             </div>
-        </section>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{ translate('Follow Development') }}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'|format('<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="http://framework.zend.com/issues/browse/ZF2">', '</a>')) }}</p>
-                        <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank">{{ translate('ZF2 Development Portal') }} &raquo;</a></p>
-                    </div>
+        </div>
+    </section>
+    <section id="homepage-testimonial" class="homepage-section">
+        <div class="container">
+            <h2 class="homepage-section-header">What say they about us?</h2>
+            <div class="row content-row-20">
+                <div class="col-md-4">
+                    <p class="lead">Real guests, real hosts, real success.</p>
+                </div>
+                <div class="col-md-7 col-md-offset-1">
+                    <blockquote>
+                        "Use PivotDesk once and you'll use it again. It makes the entire process really smooth."
+                        <br>
+                        <span class="text-info">Joel Wishkovsky @JoelWish | COO Sols New York city</span>
+                    </blockquote>
+                    <blockquote>
+                        "PivotDesk allows me to grow my office space at the same rate as my headcount, while at the same time tapping into the resources and opportunities provided by my Host company."
+                        <br>
+                        <span class="text-info">Char Genevier @cgenevier | CEO The Cotery Boulder</span>
+                    </blockquote>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{ translate('Discover Modules') }}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'|format('<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>')) }}</p>
-                        <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank">{{ translate('Explore ZF2 Modules') }} &raquo;</a></p>
-                    </div>
+            <div class="row content-row-20">
+                <div class="col-md-4">
+                    <p class="lead">Growing start, already spotted ;)</p>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{ translate('Help &amp; Support') }}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>{{ translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'|format('<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>')) }}</p>
-                        <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank">{{ translate('Ping us on IRC') }} &raquo;</a></p>
-                    </div>
+                <div class="col-md-7 col-md-offset-1">
+
+                    <blockquote>
+                        <img width="60" style="float:right" class="img-circle" src="/img/portrait/marc.png">
+                        "Use PivotDesk once and you'll use it again. It makes the entire process really smooth."
+                        <br>
+                        <span class="text-info">Joel Wishkovsky @JoelWish | COO Sols New York city</span>
+                    </blockquote>
+                    <blockquote>
+                        <img width="60" style="float:right" class="img-circle" src="/img/portrait/lorenz.png">
+                        "PivotDesk allows me to grow my office space at the same rate as my headcount, while at the same time tapping into the resources and opportunities provided by my Host company."
+                        <br>
+                        <span class="text-info">Char Genevier @cgenevier | CEO The Cotery Boulder</span>
+                    </blockquote>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock content %}
 
 {% block inline %}
-<script type="text/javascript" src="{{ basePath() }}/js/jquery-ui.min.js"></script>
-<script>
-$(function() {
+    <script type="text/javascript" src="{{ basePath() }}/js/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
 
-  $( "#city" ).autocomplete({
-    source: "destination/cities",
-    minLength: 1,
-    select: function( event, ui ) {
+            $( "#city" ).autocomplete({
+                source: "destination/cities",
+                minLength: 1,
+                select: function( event, ui ) {
 
-    },
-    open: function() {
-      $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-    },
-    close: function() {
-      $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-    }
-  });
-});
-</script>
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
+    </script>
 {% endblock inline %}

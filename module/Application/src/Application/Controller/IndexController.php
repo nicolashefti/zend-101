@@ -11,18 +11,10 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        $featured_posts = [
-            [
-                'title' => 'Hello'
-            ],
-            [
-                'title' => 'Word'
-            ],
-            [
-                'title' => 'Hold on!'
-            ],
-        ];
+        $featured_posts = Destination::getDestinations();
+
         $featured_cities = Destination::available();
+
         return new ViewModel([
             'featured_posts' => $featured_posts,
             'featured_cities' => $featured_cities

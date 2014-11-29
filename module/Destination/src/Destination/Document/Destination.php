@@ -82,7 +82,22 @@ class Destination
         return ['Berlin','Hamburg','Munich','Köln','Frankfurt','Stuttgart','Düsseldorf','Dortmund','Essen','Bremen',
                'Dresden','Leipzig','Hannover','Nuremberg','Duisburg','Bochum','Wuppertail','Bonn','Bielefeld','Mannheim'];
     }
-  
+
+    public function getDestinations($num_destination = 3) {
+
+        $em = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
+        $query = $em->createQueryBuilder('Destination\Document\Destination');
+
+        $query
+            ->field('published')->equals(true)
+            ->limit($num_destination)
+            ->sort('updatedAt', 'desc');
+
+        $destinations = $query->getQuery()->execute();
+
+        return $destinations;
+    }
+
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception("Not used");
@@ -178,8 +193,6 @@ class Destination
             );
             $inputFilter->add($file);
 
-            
- 
             $this->inputFilter = $inputFilter;
         }
  
