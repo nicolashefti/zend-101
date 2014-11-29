@@ -1,7 +1,26 @@
+#homepage-hero {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url('/img/intro-bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+#homepage-hero .jumbotron {
+    padding-top: 10%;
+    padding-bottom: 15%;
+    line-height: inherit;
+}
 .homepage-section {
     padding-top: 60px;
     padding-bottom: 90px;
 }
 .homepage-section-header {
     text-align: center;
+}
+.search {
+    background-color: rgba(255, 255, 255, .8);
+    padding: 20px;
+    border: 1px solid #ebebeb;
+    box-shadow: 2px 3px 3px #C2C2C2;
 }

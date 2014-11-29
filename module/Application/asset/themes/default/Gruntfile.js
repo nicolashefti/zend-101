@@ -58,6 +58,6 @@ module.exports = function(grunt) {
   grunt.registerTask('deployment', ['compass']);
   
   // Development tasks, triggered by watch
-  grunt.registerTask('development-scss', ['compass']);
+  grunt.registerTask('development-scss', ['compass','copy:css']);
 
 };

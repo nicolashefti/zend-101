@@ -5,24 +5,42 @@
 {% endblock style %}
 
 {% block content %}
-    <div class="container">
-        <div class="jumbotron">
-            <div class="text-center">
-                <h1>{{ translate('Welcome to %sZend 101%s'|format('<span class="zf-green">', '</span>')) }}</h1>
-                <p class="lead">Browse and book the best travel destinations in Germany.</p>
-            </div>
-            <form class="form-inline" action="{{ url('destination') }}" method="get">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input id="city" class="form-control input-lg" type="text" name="city" size="30" value="" placeholder="Where do you want to travel?"/>
+    <section id="homepage-hero" class="homepage-section">
+        <div class="container">
+            <div class="jumbotron">
+                <div class="text-center">
+                    <h1>{{ translate('Welcome to %sZend 101%s'|format('<span class="zf-green">', '</span>')) }}</h1>
+                    <p class="lead">Browse and book the best travel destinations in Germany.</p>
+                </div>
+                <form class="form-horizontal" role="form" action="{{ url('destination') }}" method="get">
+                    <div class="form-group-lg">
+                        <div class="col-md-8 col-md-offset-2 search">
+                            <div class="col-md-6">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-addon"><i class="fa fa-map-marker fa-lg"></i></div>
+                                    <input class="form-control" type="city" placeholder="Wo m&ouml;chtest Du reisen ?"></input>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control input-lg">
+                                    <option value="0">F&uuml;r</option>
+                                    <option value="1">1</option>
+                                    <option value="5">5 Leute</option>
+                                    <option value="20">20 Leute</option>
+                                    <option value="50">50 Leute</option>
+                                    <option value="100">Mehr als 50</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="btn btn-primary btn-lg" type="submit" value="SUCHEN">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-search">&nbsp;Search</span>
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+    </section>
+    <div class="container">
         <section id="homepage-featured" class="homepage-section">
             <h2 class="homepage-section-header">Explore popular destinations</h2>
             <div class="row">
