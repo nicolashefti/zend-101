@@ -1,0 +1,23 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-stack;
+    font-weight: 700;
+}
+
+body {
+    color: $text-color;
+}
+
+h2 {
+    padding: 0.2em 0;
+    margin: 0.1em 0;
+}
+
+.navbar {
+    text-transform: uppercase;
+}

@@ -35,6 +35,22 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
             $hydratedData['id'] = $return;
         }
 
+        /** @Field(type="boolean") */
+        if (isset($data['published'])) {
+            $value = $data['published'];
+            $return = (bool) $value;
+            $this->class->reflFields['published']->setValue($document, $return);
+            $hydratedData['published'] = $return;
+        }
+
+        /** @Field(type="date") */
+        if (isset($data['updatedAt'])) {
+            $value = $data['updatedAt'];
+            if ($value instanceof \MongoDate) { $return = new \DateTime(); $return->setTimestamp($value->sec); } elseif (is_numeric($value)) { $return = new \DateTime(); $return->setTimestamp($value); } elseif ($value instanceof \DateTime) { $return = $value; } else { $return = new \DateTime($value); }
+            $this->class->reflFields['updatedAt']->setValue($document, clone $return);
+            $hydratedData['updatedAt'] = $return;
+        }
+
         /** @Field(type="string") */
         if (isset($data['title'])) {
             $value = $data['title'];

@@ -22,9 +22,20 @@ class DestinationForm extends Form
             'name' => 'id',
             'type' => 'Hidden',
             'options' => array(
-                'label' => '',
+                // 'label' => '',
             ),
         ));
+
+        $this->add(array(
+            'name' => 'published',
+            'type' => 'Checkbox',
+            'options' => array(
+                'label' => '',
+
+            ),
+        ));
+
+
         $this->add(array(
             'name' => 'title',
             'type' => 'Text',

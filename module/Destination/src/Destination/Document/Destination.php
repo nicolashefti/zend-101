@@ -15,7 +15,17 @@ class Destination
 {
     /** @ODM\Id */
     public $id;
-    
+
+    /** @ODM\Field(type="boolean") */
+    public $published;
+
+    /**
+     * Date of last update
+     *
+     * @ODM\Date
+     */
+    public $updatedAt;
+
     /** @ODM\Field(type="string") */
     public $title;
     
@@ -36,9 +46,9 @@ class Destination
     
     /** @ODM\Collection */
     public $picture;
-    
-    
+
     public $inputFilter;
+
     /**
      * @return the $id
      */
@@ -72,7 +82,22 @@ class Destination
         return ['Berlin','Hamburg','Munich','Köln','Frankfurt','Stuttgart','Düsseldorf','Dortmund','Essen','Bremen',
                'Dresden','Leipzig','Hannover','Nuremberg','Duisburg','Bochum','Wuppertail','Bonn','Bielefeld','Mannheim'];
     }
-  
+
+    public function getDestinations($num_destination = 3) {
+
+        $em = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
+        $query = $em->createQueryBuilder('Destination\Document\Destination');
+
+        $query
+            ->field('published')->equals(true)
+            ->limit($num_destination)
+            ->sort('updatedAt', 'desc');
+
+        $destinations = $query->getQuery()->execute();
+
+        return $destinations;
+    }
+
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception("Not used");
@@ -168,8 +193,6 @@ class Destination
             );
             $inputFilter->add($file);
 
-            
- 
             $this->inputFilter = $inputFilter;
         }
  
@@ -190,7 +213,11 @@ class Destination
         $this->description = $data['description'];
         $this->price = $data['price'];
         $this->city = $data['city'];
-        $this->picture[] = $data['image-file'];
+        $this->published = $data['published'];
+        $this->updatedAt = new \MongoDate();
+
+        if ($data['image-file']['error'] == 0)
+            $this->picture[] = $data['image-file'];
     }
 
        

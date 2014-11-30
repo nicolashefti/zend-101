@@ -45,10 +45,10 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugins
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+    // Load the plugins
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-copy');
   
   // Default tasks
@@ -58,6 +58,6 @@ module.exports = function(grunt) {
   grunt.registerTask('deployment', ['compass']);
   
   // Development tasks, triggered by watch
-  grunt.registerTask('development-scss', ['compass']);
+  grunt.registerTask('development-scss', ['compass','copy:css']);
 
 };

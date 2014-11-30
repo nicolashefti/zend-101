@@ -1,0 +1,12 @@
+.shadow-box {
+    @include box-shadow(0px 0px 5px rgba(0, 0, 0,0.15));
+}
+.super-padding-box {
+    padding: 30px 60px;
+}
+.super-margin-box {
+    margin: 50px 0;
+}
+.content-row-20 {
+    margin-top: 20px;
+}

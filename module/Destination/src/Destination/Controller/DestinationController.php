@@ -9,9 +9,10 @@ use Zend\View\Model\JsonModel;
 use Destination\Document\Destination;
 use Destination\Form\DestinationForm;
 
+use Zend\Debug\Debug;
+
 class DestinationController extends AbstractActionController
 {
-
     protected $em;
     
     public function getEntityManager()
@@ -27,15 +28,19 @@ class DestinationController extends AbstractActionController
         $qb_destination = $this->getEntityManager()
                                ->createQueryBuilder('Destination\Document\Destination');                         
                                    
-        $city_search = $this->params()->fromQuery('city');
-        if ($city_search) {
+        if ( $city_search = $this->params()->fromQuery('city')) {
             $qb_destination->field('city')->equals($city_search); 
         }
+
+        $published_search = ($this->params()->fromQuery('published','1') == '1');
+        // Debug::dump($published_search);
+
+        $qb_destination->field('published')->equals($published_search);
         
-        $query = $qb_destination->getQuery();
-             
+        $destinations = $qb_destination->getQuery()->execute();
+
         return new ViewModel(array(
-                                'destinations' => $query,
+                                'destinations' => $destinations,
                                 'title_search' => $city_search,
                             ));
         
@@ -72,7 +77,9 @@ class DestinationController extends AbstractActionController
             // die(var_dump($post));
             
             if ($form->isValid()) {
-                $destination->exchangeArray($form->getData());
+                $data = $form->getData();
+                $data['published'] = False;
+                $destination->exchangeArray($data);
                 $this->getEntityManager()->persist($destination);
                 $this->getEntityManager()->flush();
  
