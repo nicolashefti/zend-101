@@ -2,11 +2,10 @@
     <div class="container text-muted">
         <div class="row">
             <div class="col-md-3">
-                <h3>More tests menu</h3>
-                <ul>
-                    <li><a class="ajax-link" data-target="time" href="/ajax">Do you have the time ?</a></li>
-                    <li><span id="time">Time will come...</span></li>
-                    <li>Twig extension: {{ myTwigExtension() }}</li>
+                <h3>Mehr Info</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="{{ url('about') }}">&Uuml;ber uns</a></li>
+                    <li><a href="{{ url('policies') }}">Impressum</a></li>
                 </ul>
             </div>
             <div class="col-md-3">

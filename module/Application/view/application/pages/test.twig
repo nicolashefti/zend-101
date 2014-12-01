@@ -1,0 +1,14 @@
+{% extends 'layout/layout.twig' %}
+
+{% block content %}
+    <section class="container">
+        <h1>Test page</h1>
+        <h2>Simple Ajax link</h2>
+        <p>
+            <a class="ajax-link" data-target="time" href="/ajax">Do you have the time ?</a> <span id="time">Time will come...</span>
+        </p>
+        <h2>Twig extension</h2>
+        <p>Twig extension: {{ myTwigExtension() }}</p>
+    </section>
+
+{% endblock content %}
