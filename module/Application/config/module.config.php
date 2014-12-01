@@ -50,20 +50,7 @@ return array(
                     ),
                 ),
             ),
-            
-            // Home made static page
-            'about' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/about',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'about',
-                        'template'   => 'application/pages/policies',
-                    ),
-                ),
-            ),
-            
+
             // Phlystatic page
             'policies' => array(
                 'type' => 'Literal',
@@ -74,6 +61,26 @@ return array(
                         'template'   => 'application/pages/policies',
                         // optionally set a specific layout for this page
                         // 'layout'     => 'layout/some-layout',
+                    ),
+                ),
+            ),
+            'about' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/about',
+                    'defaults' => array(
+                        'controller' => 'PhlySimplePage\Controller\Page',
+                        'template'   => 'application/pages/about',
+                    ),
+                ),
+            ),
+            'test' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/test',
+                    'defaults' => array(
+                        'controller' => 'PhlySimplePage\Controller\Page',
+                        'template'   => 'application/pages/test',
                     ),
                 ),
             ),

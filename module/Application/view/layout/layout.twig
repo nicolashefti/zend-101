@@ -45,11 +45,15 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        {% block content %}
-            <div class="container">
-            {{ content|raw }}
-            </div>
-        {% endblock content %}
+        {% block layoutcontent %}
+
+            {% block content %}
+                <div class="container">
+                {{ content|raw }}
+                </div>
+            {% endblock content %}
+
+        {% endblock %}
 
         {% include "layout/footer.twig" %}
 
