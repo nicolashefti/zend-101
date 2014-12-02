@@ -167,7 +167,7 @@ class Destination
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min'      => 10,
-                            'max'      => 500,
+                            'max'      => 1200,
                         ),
                     ),
                 ),
