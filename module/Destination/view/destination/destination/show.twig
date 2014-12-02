@@ -6,12 +6,30 @@
             <h1>{{ destination.title }}</h1>
             <div class="row">
                 <div class="col-md-9">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            {% for image in destination.picture %}
+                                <li data-target="#carousel-example-generic" data-slide-to="0" {{ loop.first ? 'class="active"' : '' }}></li>
+                            {% endfor %}
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            {% for image in destination.picture %}
+                                <div class="item {{ loop.first ? 'active' : '' }}">
+                                    <img class="img-responsive" src="/img/uploads/{{ image.name }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                     <div class="row">
-                    {% for image in destination.picture %}
-                      <div class="col-md-4">
-                        <img class="img-thumbnail" src="/img/uploads/{{ image.name }}">
-                      </div>
-                    {% endfor %}
+
                     </div>
                     <hr>
                     <p>{{ destination.description }}</p>
