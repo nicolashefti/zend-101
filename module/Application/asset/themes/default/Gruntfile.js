@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
     options: {
-      dist: '../../../../../public/'
+      dist: '../../../../../htdocs/'
     },
     cssmin: {
       options: {
