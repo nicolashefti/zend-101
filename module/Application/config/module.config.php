@@ -132,7 +132,8 @@ return array(
     'zfctwig' => array(
         'extensions' => [
             'Application\Twig\Extension\RenderString',
-        ],
+            'Application\Twig\Filter\TruncateText',
+        ]
     ),
 
     'service_manager' => array(
