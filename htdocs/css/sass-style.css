@@ -38,6 +38,16 @@ h2 {
   padding: 30px 60px;
 }
 
+/* line 7, ../scss/base/_box.scss */
+.super-margin-box {
+  margin: 50px 0;
+}
+
+/* line 10, ../scss/base/_box.scss */
+.content-row-20 {
+  margin-top: 20px;
+}
+
 /* line 1, ../scss/layout/_general.scss */
 body {
   padding-top: 50px;
@@ -48,7 +58,6 @@ footer {
   padding: 20px 0;
   background: #f2f2f2;
   border-top: 1px solid #DFDFDF;
-  margin-top: 110px;
 }
 
 /* line 1, ../scss/layout/_homepage.scss */
@@ -70,16 +79,18 @@ footer {
 
 /* line 14, ../scss/layout/_homepage.scss */
 .homepage-section {
+  border-top: 1px solid #DFDFDF;
   padding-top: 60px;
   padding-bottom: 90px;
 }
 
-/* line 18, ../scss/layout/_homepage.scss */
+/* line 19, ../scss/layout/_homepage.scss */
 .homepage-section-header {
+  font-size: 2em;
   text-align: center;
 }
 
-/* line 21, ../scss/layout/_homepage.scss */
+/* line 23, ../scss/layout/_homepage.scss */
 .search {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
