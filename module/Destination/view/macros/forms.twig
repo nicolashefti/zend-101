@@ -1,0 +1,32 @@
+{% macro input(name, class, value, type, label, size, messages) %}
+    {% set print_class = class ? ' class="' ~ class ~ '"' : '' %}
+    {% if type != 'hidden' %}
+        <div class="form-element-{{ name }}" xmlns="http://www.w3.org/1999/html">
+    {% endif %}
+
+    {% if label %}
+        <label>{{ label }}</label>
+    {% endif %}
+
+    {% if type == 'textarea' %}
+        <textarea {{ print_class | raw }} name="{{ name }}" size="{{ size|default(20) }}" {% if messages|length > 0 %}class="error"{% endif %}/>{{ value|e }}</textarea>
+    {% elseif type == 'checkbox' %}
+        <input {{ print_class | raw }} type="{{ type }}" name="{{ name }}" value="1"{% if value == true %} checked="checked"{% endif %} {% if messages|length > 0 %}class="error"{% endif %}/>
+    {% elseif type == 'select' %}
+        <select {{ print_class | raw }} type="{{ type }}" name="{{ name }}" value="1"{% if value == true %} checked="checked"{% endif %} {% if messages|length > 0 %}class="error"{% endif %}/>
+        </select>
+    {% else %}
+        <input {{ print_class | raw }} type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" {% if messages|length > 0 %}class="error"{% endif %}/>
+    {% endif %}
+
+    {% if type != 'hidden' %}
+        </div>
+    {%  endif %}
+    {% if messages|length > 0 %}
+        <ul>
+            {% for m in messages %}
+                <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}

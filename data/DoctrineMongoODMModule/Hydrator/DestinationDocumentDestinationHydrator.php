@@ -76,6 +76,22 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
         }
 
         /** @Field(type="string") */
+        if (isset($data['phone'])) {
+            $value = $data['phone'];
+            $return = (string) $value;
+            $this->class->reflFields['phone']->setValue($document, $return);
+            $hydratedData['phone'] = $return;
+        }
+
+        /** @Field(type="string") */
+        if (isset($data['email'])) {
+            $value = $data['email'];
+            $return = (string) $value;
+            $this->class->reflFields['email']->setValue($document, $return);
+            $hydratedData['email'] = $return;
+        }
+
+        /** @Field(type="string") */
         if (isset($data['city'])) {
             $value = $data['city'];
             $return = (string) $value;

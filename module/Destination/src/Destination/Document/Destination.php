@@ -31,10 +31,16 @@ class Destination
     
     /** @ODM\Field(type="string") */
     public $description;
-    
-    /** @ODM\String */
+
+    /** @ODM\Field(type="string") */
     public $address;
-    
+
+    /** @ODM\Field(type="string") */
+    public $phone;
+
+    /** @ODM\Field(type="string") */
+    public $email;
+
     /** @ODM\String */
     public $city;
     
@@ -102,12 +108,12 @@ class Destination
     {
         throw new \Exception("Not used");
     }
-    
+
     public function getInputFilter()
     {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();
- 
+
             $inputFilter->add(array(
                 'name'     => 'id',
                 'required' => true,
@@ -115,7 +121,7 @@ class Destination
                     array('name' => 'Int'),
                 ),
             ));
- 
+
             $inputFilter->add(array(
                 'name'     => 'title',
                 'required' => true,
@@ -134,7 +140,7 @@ class Destination
                     ),
                 ),
             ));
- 
+
              $inputFilter->add(array(
                 'name'     => 'city',
                 'required' => true,
@@ -153,7 +159,7 @@ class Destination
                     ),
                 ),
             ));
-            
+
             $inputFilter->add(array(
                 'name'     => 'description',
                 'required' => true,
@@ -179,7 +185,7 @@ class Destination
                     array('name' => 'Int'),
                 ),
             ));
-            
+
             // File Input
             $file = new FileInput('image-file');
             $file->setRequired(false);
@@ -195,10 +201,10 @@ class Destination
 
             $this->inputFilter = $inputFilter;
         }
- 
+
         return $this->inputFilter;
     }
-    
+
     /**
      * Default Zend Hydrator exepects getArrayCopy() and exchangeArray() to be implemented
      */
@@ -209,12 +215,17 @@ class Destination
     public function exchangeArray($data = array())
     {
         $this->id = $data['id'];
+        $this->published = $data['published'];
+        $this->updatedAt = new \MongoDate();
+
         $this->title = $data['title'];
         $this->description = $data['description'];
         $this->price = $data['price'];
+
+        $this->address = $data['address'];
         $this->city = $data['city'];
-        $this->published = $data['published'];
-        $this->updatedAt = new \MongoDate();
+        $this->phone = $data['phone'];
+        $this->email = $data['email'];
 
         if ($data['image-file']['error'] == 0)
             $this->picture[] = $data['image-file'];

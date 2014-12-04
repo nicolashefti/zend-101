@@ -22,7 +22,7 @@ class DestinationForm extends Form
             'name' => 'id',
             'type' => 'Hidden',
             'options' => array(
-                // 'label' => '',
+                'label' => ' ',
             ),
         ));
 
@@ -30,7 +30,7 @@ class DestinationForm extends Form
             'name' => 'published',
             'type' => 'Checkbox',
             'options' => array(
-                'label' => '',
+                'label' => 'Published',
 
             ),
         ));
@@ -43,7 +43,19 @@ class DestinationForm extends Form
                 'label' => 'Title',
             ),
             'attributes' => [
-              'class' => 'form-control'
+              'class' => 'form-control',
+
+            ]
+        ));
+
+        $this->add(array(
+            'name' => 'address',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Address',
+            ),
+            'attributes' => [
+                'class' => 'form-control'
             ]
         ));
 
@@ -58,6 +70,18 @@ class DestinationForm extends Form
               'class' => 'form-control'
            ]
          ));
+
+        $this->add(array(
+            'name' => 'phone',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Phone',
+            ),
+            'attributes' => [
+                'class' => 'form-control',
+            ]
+        ));
+
         $this->add(array(
             'name' => 'price',
             'type' => 'Number',
@@ -81,13 +105,16 @@ class DestinationForm extends Form
         ));
         
         $file = new Element\File('image-file');
-        $file->setLabel('Picture')
+        $file->setLabel('Pictures')
              ->setAttribute('id', 'image-file');
         $this->add($file);
         
         $this->add(array(
             'name' => 'submit',
             'type' => 'Submit',
+            'options' => array(
+                'label' => ' ',
+            ),
             'attributes' => array(
                 'value' => 'Go',
                 'id' => 'submitbutton',
