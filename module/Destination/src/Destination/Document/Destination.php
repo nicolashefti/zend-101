@@ -186,7 +186,7 @@ class Destination
             $file->getFilterChain()->attachByName(
                 'filerenameupload',
                 array(
-                    'target'          => './public/img/uploads/',
+                    'target'          => './htdocs/img/uploads/',
                     'overwrite'       => true,
                     'use_upload_name' => true,
                 )
