@@ -32,16 +32,30 @@
 
                     </div>
                     <hr>
+                    <h3>{{ translate('Description') }}</h3>
                     <p>{{ destination.description }}</p>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-success btn btn-block">Book now</button>
-                    <p>
-                      <a href={{ url('destination', {'action':'edit', 'id':destination.id})}}>Edit</a>
-                      <a href={{ url('destination', {'action':'delete', 'id':destination.id})}}>Delete</a>
-                    </p>
+                    <button class="btn btn-warning btn-lg btn btn-block show-contact-info"><i class="fa fa-plus"></i> {{ translate('Contact informations') }}</button>
+                    <div class="well well-sm super-margin-box" style="display: none" id="contact-info">
+                        <p class="lead"> <i class="fa fa-phone"></i> {{ destination.phone }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <p>
+            <a href={{ url('destination', {'action':'edit', 'id':destination.id})}}>Edit</a> |
+            <a href={{ url('destination', {'action':'delete', 'id':destination.id})}}>Delete</a>
+        </p>
     </section>
 {% endblock content %}
+
+{% block inline %}
+    <script type="text/javascript">
+        $(function() {
+            $('.show-contact-info').click(function () {
+                $('#contact-info').toggle('bounce',500);
+            });
+        });
+    </script>
+{% endblock inline %}

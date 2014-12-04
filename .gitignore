@@ -26,4 +26,4 @@ extras/documentation
 .idea
 
 # Public files built with Grunt
-public/css/sass-style.css
+htdocs/css/sass-style.css
