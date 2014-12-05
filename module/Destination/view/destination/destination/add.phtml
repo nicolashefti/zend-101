@@ -1,28 +1,29 @@
-<?php
+<div class="shadow-box super-margin-box super-padding-box">
+    <?php
 
-$title = 'Add new destination';
-$this->headTitle($title);
-?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
-$form->setAttribute('action', $this->url('destination', array('action' => 'add')));
-$form->prepare();
+    use Zend\Form\Element;
 
+    $title = 'Add destination';
+    $this->headTitle($title);
+    ?>
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+    <?php
 
+    $form->setAttribute('action', $this->url('destination', ['action' => 'add']) );
+    $form->prepare();
 
-echo $this->form()->openTag($form);
+    echo $this->form()->openTag($form);
 
-foreach ($form as $element) {
-?>
-  <div class="form-group">
-  <?php  echo $this->formLabel()->openTag($element); 
-    // echo $element->label;
-    echo $this->formLabel()->closeTag();
-    echo $this->formElement($element);       // <-- Magic!
-    echo $this->formElementErrors($element);
-  ?>
-  </div>
-  <?php
-}
+    foreach ($form as $element) { ?>
 
-echo $this->form()->closeTag();
+        <div class="form-group">
+            <?php echo $this->formLabel($element);
+            echo $this->formElement($element);       // <-- Magic!
+            echo $this->formElementErrors($element);
+            ?>
+        </div>
+    <?php }
+    echo $this->form()->closeTag();
+    ?>
+</div>
+
