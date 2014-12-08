@@ -15,6 +15,8 @@ return array(
         'ZendDeveloperTools',
         'Destination',
         'ZF2FileUploadExamples',
+        'ZfcUser',
+        'ZfcUserDoctrineMongoODM'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
