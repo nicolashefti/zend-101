@@ -35,7 +35,6 @@ class DestinationForm extends Form
             ),
         ));
 
-
         $this->add(array(
             'name' => 'title',
             'type' => 'Text',
@@ -93,6 +92,19 @@ class DestinationForm extends Form
               'class' => 'form-control'
            ]
         ));
+
+        $multiCheckbox = new Element\MultiCheckbox('amenities');
+        $multiCheckbox->setLabel('Amenities');
+        $multiCheckbox->setValueOptions(array(
+            'wifi' => 'WIFI',
+            'parking' => 'Parking',
+            'disabled' => 'Disabled access'
+        ));
+        $this->add($multiCheckbox);
+
+        $form = new Form('my-form');
+        $form->add($multiCheckbox);
+
         $this->add(array(
             'name' => 'description',
             'type' => 'Textarea',
