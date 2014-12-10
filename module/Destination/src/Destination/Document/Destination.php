@@ -226,11 +226,9 @@ class Destination
         $this->description = $data['description'];
         $this->price = $data['price'];
 
-        foreach ($data['amenities'] as $amenity) {
-            $this->amenities[] = $amenity;
-
+        foreach ($data['amenities'] as $key => $amenity) {
+            $this->amenities[$key] = $amenity;
         }
-        $this->amenities[] = 'end';
 
         $this->address = $data['address'];
         $this->city = $data['city'];
