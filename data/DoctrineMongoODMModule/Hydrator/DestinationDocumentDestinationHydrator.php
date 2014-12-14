@@ -99,10 +99,10 @@ class DestinationDocumentDestinationHydrator implements HydratorInterface
             $hydratedData['city'] = $return;
         }
 
-        /** @Field(type="string") */
+        /** @Field(type="collection") */
         if (isset($data['amenities'])) {
             $value = $data['amenities'];
-            $return = (string) $value;
+            $return = $value;
             $this->class->reflFields['amenities']->setValue($document, $return);
             $hydratedData['amenities'] = $return;
         }

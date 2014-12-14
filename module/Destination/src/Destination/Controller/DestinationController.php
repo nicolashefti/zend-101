@@ -129,7 +129,10 @@ class DestinationController extends AbstractActionController
                 $this->getEntityManager()->flush();
 
                 // Redirect to list of albums
-                return $this->redirect()->toRoute('destination');
+                return $this->redirect()->toRoute('destination', array(
+                    'action' => 'show',
+                    'id' => $id
+                ));
             }
         }
         

@@ -4,6 +4,7 @@
     <section class="container">
         <div class="shadow-box super-margin-box super-padding-box">
             <h1>{{ destination.title }}</h1>
+            <hr>
             <div class="row">
                 <div class="col-md-9">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -36,9 +37,14 @@
                     <p>{{ destination.description }}</p>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-warning btn-lg btn btn-block show-contact-info"><i class="fa fa-plus"></i> {{ translate('Contact informations') }}</button>
-                    <div class="well well-sm super-margin-box" style="display: none" id="contact-info">
-                        <p class="lead"> <i class="fa fa-phone"></i> {{ destination.phone }}</p>
+                    <div class="shadow-box small-padding-box">
+                        <div class="alert alert-info text-center" id="price-info">
+                            <p>{{ destination.price }} &euro; {{ translate('Per Person') }}</p>
+                        </div>
+                        <button class="btn btn-warning btn-lg btn btn-block show-contact-info"><i class="fa fa-plus"></i> {{ translate('Contact informations') }}</button>
+                        <ul class="list-group super-margin-box" style="display: none" id="contact-info">
+                            <li class="list-group-item"><i class="fa fa-phone"></i> {{ destination.phone }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>

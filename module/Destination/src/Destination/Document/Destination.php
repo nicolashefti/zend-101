@@ -21,7 +21,6 @@ class Destination
 
     /**
      * Date of last update
-     *
      * @ODM\Date
      */
     public $updatedAt;
@@ -43,8 +42,8 @@ class Destination
 
     /** @ODM\String */
     public $city;
-    
-    /** @ODM\Field(type="string") */
+
+    /** @ODM\Collection */
     public $amenities;
     
     /** @ODM\Float */
@@ -120,6 +119,11 @@ class Destination
                 'filters'  => array(
                     array('name' => 'Int'),
                 ),
+            ));
+
+            $inputFilter->add(array(
+                'name'     => 'amenities[wifi]',
+                'required' => false,
             ));
 
             $inputFilter->add(array(
@@ -221,6 +225,10 @@ class Destination
         $this->title = $data['title'];
         $this->description = $data['description'];
         $this->price = $data['price'];
+
+        foreach ($data['amenities'] as $key => $amenity) {
+            $this->amenities[$key] = $amenity;
+        }
 
         $this->address = $data['address'];
         $this->city = $data['city'];
