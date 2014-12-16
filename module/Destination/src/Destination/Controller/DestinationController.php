@@ -126,6 +126,20 @@ class DestinationController extends AbstractActionController
 
             if ($form->isValid()) {
 
+                $files   = $request->getFiles();
+                // e.g., $files['my-upload']['tmp_name'] === '/tmp/php5Wx0aJ'
+                // e.g., $files['my-upload']['name'] === 'profile-picture.jpg'
+
+                // Fetch the filter from the Filter Plugin Manager to automatically handle dependencies
+                $filter = $this->getServiceLocator()->get('FilterManager')->get('S3RenameUpload');
+
+                $filter->setOptions(array(
+                    'bucket'    => 'roomister',
+                    'target'    => $files['image-file']['name'],
+                    'overwrite' => true,
+                ));
+                $filter->filter($files['image-file']);
+
                 $this->getEntityManager()->flush();
 
                 // Redirect to list of albums

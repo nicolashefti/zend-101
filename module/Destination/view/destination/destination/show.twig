@@ -16,7 +16,7 @@
                         <div class="carousel-inner" role="listbox">
                             {% for image in destination.picture %}
                                 <div class="item {{ loop.first ? 'active' : '' }}">
-                                    <img class="img-responsive" src="/img/uploads/{{ image.name }}">
+                                    <img class="img-responsive" src="{{ s3Link(image.name, 'roomister') }}">
                                 </div>
                             {% endfor %}
                         </div>

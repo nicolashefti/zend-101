@@ -191,17 +191,7 @@ class Destination
             ));
 
             // File Input
-            $file = new FileInput('image-file');
-            $file->setRequired(false);
-            $file->getFilterChain()->attachByName(
-                'filerenameupload',
-                array(
-                    'target'          => './public/img/uploads/',
-                    'overwrite'       => true,
-                    'use_upload_name' => true,
-                )
-            );
-            $inputFilter->add($file);
+
 
             $this->inputFilter = $inputFilter;
         }

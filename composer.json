@@ -20,6 +20,7 @@
         "zendframework/zftool": "dev-master",
         "zf-commons/zfc-user": "0.x-dev",
         "zf-commons/zfc-user-doctrine-mongo-odm": "~0.1",
-        "bjyoungblood/bjy-authorize": "1.4.*"
+        "bjyoungblood/bjy-authorize": "1.4.*",
+        "aws/aws-sdk-php-zf2": "1.2.*"
     }
 }

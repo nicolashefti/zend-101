@@ -45,6 +45,25 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
+        {% block messages %}
+
+                {% for message in flashMessenger().getMessages() %}
+                    {{ message }}
+                {% endfor %}
+
+            <div class="alert alert-danger container" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Enter a valid email address
+            </div>
+            {% if flashMessenger().hasMessages() %}
+                {% for message in flashMessenger().getMessages() %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+            {{ flashMessages }}
+        {% endblock %}
+
         {% block layoutcontent %}
 
             {% block content %}

@@ -16,7 +16,8 @@ return array(
         'Destination',
         'ZF2FileUploadExamples',
         'ZfcUser',
-        'ZfcUserDoctrineMongoODM'
+        'ZfcUserDoctrineMongoODM',
+        'Aws'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
