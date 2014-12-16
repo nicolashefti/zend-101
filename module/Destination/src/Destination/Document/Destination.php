@@ -190,9 +190,6 @@ class Destination
                 ),
             ));
 
-            // File Input
-
-
             $this->inputFilter = $inputFilter;
         }
 
@@ -228,6 +225,4 @@ class Destination
         if ($data['image-file']['error'] == 0)
             $this->picture[] = $data['image-file'];
     }
-
-       
 }
