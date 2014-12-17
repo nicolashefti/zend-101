@@ -154,6 +154,7 @@ class DestinationController extends AbstractActionController
         return array(
             'id' => $id,
             'form' => $form,
+            'destination' => $destination
         );      
     }
 
