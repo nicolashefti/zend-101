@@ -222,7 +222,7 @@ class Destination
         $this->phone = $data['phone'];
         $this->email = $data['email'];
 
-        if ($data['image-file']['error'] == 0)
+        if ($data['image-file']['name'] != '' && $data['image-file']['error'] == 0)
             $this->picture[] = $data['image-file'];
     }
 }
