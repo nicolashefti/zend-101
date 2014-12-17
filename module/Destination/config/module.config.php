@@ -35,7 +35,7 @@ return array(
              'destination' => array(
                  'type'    => 'segment',
                  'options' => array(
-                     'route'    => '/destination[/][:action][/:id]',
+                     'route'    => '/destination[/][:action][/:id][/:subaction][/:subid]',
                      'constraints' => array(
                          'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                          'id'     => '[a-zA-Z0-9_-]+',

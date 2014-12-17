@@ -108,6 +108,11 @@ class Destination
         throw new \Exception("Not used");
     }
 
+    public function deletePicture($picture_id) {
+
+
+    }
+
     public function getInputFilter()
     {
         if (!$this->inputFilter) {

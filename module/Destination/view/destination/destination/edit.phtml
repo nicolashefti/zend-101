@@ -21,7 +21,25 @@
             echo $this->formElementErrors($element);
             ?>
         </div>
-    <?php }
+    <?php } ?>
+    <hr>
+    Available images:
+    <div class="row">
+        <?php foreach ($destination->picture as $key => $image) { ?>
+            <div class="col-md-3">
+                <img class="img-responsive img-thumbnail" src="<?php echo $this->s3Link($image['name'],'roomister'); ?>">
+                <hr>
+                <a class="btn btn-warning ajax-action" href="/destination/edit/<?php print $id ?>/del-img/<?php print $key ?>"><i class="fa fa-trash-o"></i></a>
+                <script type="text/javascript">
+                    $('.ajax-action').click( function(e){
+                        // e.preventDefault();
+                        console.log($(this).attr('href'));
+                    })
+                </script>
+            </div>
+        <?php } ?>
+    </div>
+    <?php
     echo $this->form()->closeTag();
     ?>
 </div>

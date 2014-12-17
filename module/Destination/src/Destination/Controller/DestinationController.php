@@ -104,6 +104,18 @@ class DestinationController extends AbstractActionController
                 'action' => 'index'
             ));
         }
+
+        $sub_action = $this->params()->fromRoute('subaction','no');
+        if ($sub_action === 'del-img') {
+            $img_index = $this->params()->fromRoute('subid');
+            unset($destination->picture[$img_index]);
+            $this->getEntityManager()->flush();
+            return $this->redirect()->toRoute('destination', array(
+                'action' => 'edit',
+                'id' => $id
+            ));
+        }
+
         
         $form  = new DestinationForm();
     
