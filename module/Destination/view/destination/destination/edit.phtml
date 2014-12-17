@@ -3,10 +3,9 @@
 
     use Zend\Form\Element;
 
-    $title = 'Edit destination';
     $this->headTitle($title);
     ?>
-    <h1><?php echo $this->escapeHtml($title); ?></h1>
+    <h1>Edit <mark><?php echo $this->escapeHtml($destination->title); ?></mark></h1>
     <?php
 
     $form->setAttribute('action', $this->url('destination', ['action' => 'edit', 'id' => $this->id ]) );
