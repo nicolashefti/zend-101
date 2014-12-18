@@ -1,0 +1,16 @@
+{% macro iconeList(amenitiesList) %}
+    {% for amenity in amenitiesList %}
+        {% if amenity == 'wifi' %}
+            {% set iconeClass = 'fa-wifi' %}
+
+        {% elseif amenity == 'disabled' %}
+            {% set iconeClass = 'fa-wheelchair' %}
+
+        {% elseif amenity == 'parking' %}
+            {% set iconeClass = 'fa-car' %}
+
+        {% endif %}
+        <i class="fa {{ iconeClass }}"></i>&nbsp;
+
+    {% endfor %}
+{% endmacro %}
