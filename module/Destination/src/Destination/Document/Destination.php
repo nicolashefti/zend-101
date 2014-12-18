@@ -219,8 +219,9 @@ class Destination
         $this->price = $data['price'];
 
         foreach ($data['amenities'] as $key => $amenity) {
-            $this->amenities[$key] = $amenity;
+
         }
+        $this->amenities = $data['amenities'];
 
         $this->address = $data['address'];
         $this->city = $data['city'];
